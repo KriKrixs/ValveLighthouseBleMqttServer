@@ -14,6 +14,9 @@ __PWR_CHARACTERISTIC = "00001525-1212-efde-1523-785feabcd124"
 __PWR_ON = bytearray([0x01])
 __PWR_STANDBY = bytearray([0x00])
 
+# Define the MQTT server address
+broker_address = "192.168.14.12"
+
 command = ""
 lh_macs = []  # hard code mac addresses here if you want, otherwise specify in command line
 
@@ -114,9 +117,6 @@ def on_message(client, userdata, msg):
     loop = asyncio.get_event_loop()
     loop.run_until_complete(run(loop, lh_macs, mqttClient))
 
-
-# Define the MQTT server address
-broker_address = "192.168.14.12"
 
 # Create an MQTT client instance
 mqttClient = mqtt.Client()
